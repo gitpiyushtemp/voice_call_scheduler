@@ -1,0 +1,19 @@
+{
+  "build": {
+    "env": {
+      "PYTHONUNBUFFERED": "1"
+    }
+  },
+  "deploy": {
+    "startCommand": "python call_scheduler.py",
+    "healthcheckPath": "/",
+    "restartPolicyType": "ON_FAILURE"
+  },
+  "cron": [
+    {
+      "schedule": "0 3 * * *",  // 10:30 AM IST = 5:00 AM UTC
+      "command": "python call_scheduler.py",
+      "name": "Daily Voice Call"
+    }
+  ]
+}
